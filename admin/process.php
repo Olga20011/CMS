@@ -10,6 +10,8 @@ if (isset($_POST["create"])) {
     Values('$date','$title','$summary', '$content')";
 
         if(mysqli_query($conn , $sqlinsert)){
+            session_start();
+            $_SESSION["create"]= "Post added sussessfully";
 
             header("Location: index.php");
 
@@ -32,7 +34,10 @@ if (isset($_POST["update"])) {
 
    $sqlUpdate = "UPDATE posts SET title = '$title' , summary = '$summary' , content ='$content' , date = '$date' WHERE id = $id";
 
-        if(mysqli_query($conn , $sqlUpdate)){
+        if(mysqli_query($conn , $sqlUpdate)){ 
+            session_start();
+            $_SESSION["upate"]= "Post updated sussessfully";
+
 
             header("Location: index.php");
             
